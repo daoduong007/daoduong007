@@ -1,5 +1,5 @@
 - 👋 Hi, I’m Dao Tung Duong
-- 👀 I’m a React Js developer
+- 👀 I’m a React Js/ Next js developer
 - 📫 Contact : daoduong.007@gmail.com
 
 <!---
