@@ -24,6 +24,8 @@ Nhập một chủ đề và chạy một lệnh, chương trình sẽ tự tạ
 
 Ở chế độ `ai`, nếu Veo lỗi ở cảnh nào thì cảnh đó tự chuyển sang zoom/lia, video vẫn ra đủ.
 
+> Mới dùng lần đầu? Đọc [HUONG-DAN.md](HUONG-DAN.md): hướng dẫn chi tiết từng bước từ cài đặt đến đăng YouTube.
+
 ---
 
 ## Cài đặt (một lần)
