@@ -10,10 +10,25 @@ from .http import ApiError, gemini_headers, request
 def _edge(text, out):
     import edge_tts
 
-    async def run():
-        await edge_tts.Communicate(text, config.EDGE_VOICE, rate=config.EDGE_RATE).save(str(out))
+    tmp = out.with_suffix(".tmp.mp3")
 
-    asyncio.run(run())
+    async def run():
+        await edge_tts.Communicate(text, config.EDGE_VOICE, rate=config.EDGE_RATE).save(str(tmp))
+
+    # Ghi ra file tạm rồi mới đổi tên, để lỗi giữa chừng không để lại file rỗng
+    # khiến lần chạy sau tưởng cảnh này đã xong. Edge thỉnh thoảng lỗi mạng nên thử lại.
+    for attempt in range(3):
+        try:
+            asyncio.run(run())
+            if tmp.stat().st_size > 0:
+                tmp.replace(out)
+                return
+        except edge_tts.exceptions.NoAudioReceived:
+            if attempt == 2:
+                raise
+        finally:
+            tmp.unlink(missing_ok=True)
+    raise ApiError("Edge TTS không trả về âm thanh")
 
 
 def _gemini(text, out):

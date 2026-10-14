@@ -217,6 +217,44 @@ Cách này dùng gói Claude Pro hoặc ChatGPT Plus thay cho API.
 - Nguồn nhạc: YouTube Studio có mục *Audio Library* miễn phí, hoặc tạo nhạc bằng Suno.
 - Muốn dùng một bài khác cho video cụ thể: thêm `--music duong/dan/bai-hat.mp3` vào lệnh.
 
+### 6.7. Tạo chuyển động bằng Flow (dùng gói Google AI Pro, không tốn tiền API)
+
+Gói Google AI Pro cho dùng Veo trên web **Flow** (<https://labs.google/flow>) bằng credit hằng tháng. Gói này không gồm Gemini API, nên bạn tạo clip trên Flow bằng tay rồi đưa vào chương trình để ghép.
+
+1. **Làm video bình thường trước** (chế độ mặc định) để có kịch bản, ảnh và giọng đọc:
+   ```
+   python make_video.py "Chú thỏ học cách chia sẻ"
+   ```
+2. **Xem mô tả chuyển động từng cảnh.** Mở `script.json` và tìm dòng `motion_prompt` của từng cảnh. Hoặc chạy lệnh này để in ra hết:
+   ```
+   python -c "import json,sys; [print(f'Cảnh {i:02}: {s[\"motion_prompt\"]}') for i,s in enumerate(json.load(open(sys.argv[1]))['scenes'],1)]" output/chu-tho-hoc-cach-chia-se/script.json
+   ```
+3. **Tạo clip trên Flow, làm từng cảnh một:**
+   - Mở <https://labs.google/flow>, tạo project mới.
+   - Chọn chế độ **Frames to Video** (tạo video từ ảnh) và tải lên ảnh `images/canh_01.png`.
+   - Chọn đúng khung hình: **9:16** (dọc) cho video short, **16:9** (ngang) cho video dài.
+   - Dán `motion_prompt` của cảnh đó, thêm vào cuối: `Gentle, cheerful children's cartoon animation. No text.`
+   - Chọn model **Veo 3.1 Fast** hoặc **Lite** cho đỡ tốn credit. Quality đắt gấp 5-10 lần.
+   - Bấm tạo. Ưng ý thì bấm **Download** và chọn MP4.
+4. **Đổi tên và chép clip** vào thư mục `clips/` của video, đúng tên sau:
+   ```
+   output/chu-tho-hoc-cach-chia-se/clips/veo_canh_01.mp4
+   output/chu-tho-hoc-cach-chia-se/clips/veo_canh_02.mp4
+   ...
+   ```
+   Số cảnh luôn có 2 chữ số: `01`, `02`... `10`, `11`.
+5. **Xoá các clip zoom/lia cũ** trong `clips/`, tức là các file bắt đầu bằng `kenburns_` hoặc `ai_`. Chỉ giữ lại `veo_canh_XX.mp4`.
+6. **Ghép video:**
+   ```
+   python make_video.py "Chú thỏ học cách chia sẻ" --mode ai
+   ```
+   Video mới có tên kết thúc bằng `_short_ai.mp4`.
+
+Lưu ý:
+- **Phải có đủ clip cho mọi cảnh.** Cảnh nào thiếu `veo_canh_XX.mp4`, chương trình sẽ tự gọi Veo API. Nếu key `AIza` hợp lệ và đã bật Billing thì **sẽ bị tính tiền** cho cảnh đó. Nếu không có key, cảnh đó tự chuyển sang zoom/lia.
+- Không cần lo clip dài hay ngắn. Tiếng trong clip Flow bị bỏ, chỉ giữ giọng đọc. Lời dẫn dài hơn clip thì khung hình cuối được giữ lại cho đủ.
+- Credit Flow (tham khảo, có thể thay đổi): mỗi tài khoản có khoảng 50 credit/ngày, gói AI Pro thêm khoảng 1.000 credit/tháng. Một clip 8 giây tốn khoảng 10 credit (Lite), 20 (Fast) hoặc 100 (Quality).
+
 ### Kết quả nằm ở đâu?
 
 ```

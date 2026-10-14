@@ -69,7 +69,7 @@ def _openai(prompt):
     headers = {"Content-Type": "application/json"}
     if config.OPENAI_API_KEY:
         headers["Authorization"] = f"Bearer {config.OPENAI_API_KEY}"
-    body = {"model": config.SCRIPT_MODEL, "temperature": 0.8,
+    body = {"model": config.SCRIPT_MODEL, "temperature": 0.8, "stream": False,
             "messages": [{"role": "user", "content": prompt}]}
     resp = request("POST", f"{config.OPENAI_BASE_URL}/chat/completions", headers=headers, json=body)
     return resp.json()["choices"][0]["message"]["content"]
