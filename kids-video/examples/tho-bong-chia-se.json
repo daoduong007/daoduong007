@@ -1,0 +1,17 @@
+{
+  "title": "Thỏ Bông học cách chia sẻ",
+  "moral": "Chia sẻ với bạn bè giúp niềm vui nhân đôi.",
+  "style": "cute 3D animated children's movie style, soft warm lighting, bright pastel colors, rounded shapes",
+  "characters": [
+    {"name": "Thỏ Bông", "appearance": "a small white bunny with fluffy round tail, big blue eyes, wearing a red scarf"},
+    {"name": "Sóc Nâu", "appearance": "a little brown squirrel with a big bushy tail, green overalls, cheerful smile"}
+  ],
+  "scenes": [
+    {"narration": "Sáng nay, Thỏ Bông tìm được một giỏ cà rốt thật to!", "characters": ["Thỏ Bông"], "image_prompt": "Thỏ Bông happily finds a big basket full of bright orange carrots in a sunny meadow", "motion_prompt": "the bunny hops with joy around the basket"},
+    {"narration": "Bạn Sóc Nâu đi ngang qua, bụng kêu ọc ọc. Sóc đói quá!", "characters": ["Sóc Nâu"], "image_prompt": "Sóc Nâu walking on a forest path holding his tummy, looking hungry", "motion_prompt": "the squirrel walks slowly and rubs his tummy"},
+    {"narration": "Thỏ Bông ôm chặt giỏ cà rốt. Của tớ, của tớ hết!", "characters": ["Thỏ Bông", "Sóc Nâu"], "image_prompt": "Thỏ Bông hugging the carrot basket tightly while Sóc Nâu watches sadly", "motion_prompt": "the bunny turns away holding the basket"},
+    {"narration": "Nhưng ăn một mình, Thỏ Bông thấy buồn buồn. Chẳng vui chút nào.", "characters": ["Thỏ Bông"], "image_prompt": "Thỏ Bông sitting alone under a tree eating a carrot, looking a little lonely", "motion_prompt": "slow zoom on the bunny sighing"},
+    {"narration": "Thỏ Bông chạy đến, đưa cho Sóc Nâu một củ cà rốt. Tặng bạn nè!", "characters": ["Thỏ Bông", "Sóc Nâu"], "image_prompt": "Thỏ Bông kindly giving a carrot to a surprised and happy Sóc Nâu", "motion_prompt": "the bunny hands over the carrot, the squirrel smiles"},
+    {"narration": "Hai bạn cùng ăn, cùng cười. Chia sẻ làm niềm vui nhân đôi đó các bé ơi!", "characters": ["Thỏ Bông", "Sóc Nâu"], "image_prompt": "Thỏ Bông and Sóc Nâu sitting together eating carrots and laughing at sunset", "motion_prompt": "both friends laugh and wave"}
+  ]
+}

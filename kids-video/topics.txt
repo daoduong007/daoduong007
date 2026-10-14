@@ -1,0 +1,5 @@
+# Mỗi dòng một chủ đề. Dòng bắt đầu bằng # sẽ bị bỏ qua.
+Chú thỏ học cách chia sẻ
+Gấu con không còn sợ bóng tối
+Vịt con học đếm từ 1 đến 10
+Bé Mèo đánh răng mỗi tối
